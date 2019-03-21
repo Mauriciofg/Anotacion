@@ -1,0 +1,26 @@
+#### PIPELINE ANOTACION ####
+
+
+#MATERIALES:
+#1.- proteoma de Daphnia.
+#2.- HMMER (plus documentation).
+#3.- Set de genes homologs asociados a un EC term específico. (Eventualmente uno por cada enzima conocida).
+    
+
+#El pipeline debería funcionar de la siguiente manera:
+
+#PIPELINE:
+#1. Generar un alineamiento multiple con todos las proteínas homólogas para el EC term.
+#2. Usar HMMER (hmmbuild) para generar un HMM a partir del alineamiento múltiple.
+#3. Usar HMMER (hmmscan) para buscar genes homólogos (enzimas del EC term específico) en el proteoma de Daphnia.
+
+Se usan acá los datos de KEGG, que son set de secuencias asociadas con uno o dos EC terms.
+
+
+Software para realizar el alineamiento múltiple hay varios. Recomiendo PROMALS3D, que tiene una versión online, pero también una versión standalone. También puedes probar con MUSCLE o incluso CLUSTALW. Pero PROMALS funciona mucho mejor.
+
+El alineamiento va a tener inserciones y deleciones y sería bueno probar también varios alineamientos filtrando sitios con una fracción de gaps por sitio. Por ejemplo, remover del alineamiento todos los sitios que tengan más de 50% de gaps.
+
+También hay parámetros de coverage, e E-values que mirar en el HMMSCAN.
+
+
